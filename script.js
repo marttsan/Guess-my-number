@@ -33,11 +33,12 @@ document.querySelector(".check").addEventListener("click", () => {
       document.querySelector(".highscore").textContent = highScore;
     }
   }
-  //player guess is bigger than the number and ....
-  else if (guess > secretNumber) {
+  //player guess wrong(refactoring):
+  else if (guess !== secretNumber) {
     if (score > 1) {
       // have attempts left
-      document.querySelector(".message").textContent = "Too high !";
+      document.querySelector(".message").textContent =
+        guess > secretNumber ? "Too high !" : "Too low !";
       score--;
       document.querySelector(".score").textContent = score;
     }
@@ -46,19 +47,33 @@ document.querySelector(".check").addEventListener("click", () => {
       document.querySelector(".message").textContent = "You lost the game!";
       document.querySelector(".score").textContent = 0;
     }
-  }
-  // guess is less than secret number and ....
-  else if (guess < secretNumber) {
-    if (score > 1) {
-      // have attempts left
-      document.querySelector(".message").textContent = "Too low !";
-      score--;
-      document.querySelector(".score").textContent = score;
-    } else {
-      //doesn't have attempts left
-      document.querySelector(".message").textContent = "You lost the game!";
-      document.querySelector(".score").textContent = 0;
-    }
+
+    //player guess is bigger than the number and ....
+    // }else if (guess > secretNumber) {
+    //   if (score > 1) {
+    //     // have attempts left
+    //     document.querySelector(".message").textContent = "Too high !";
+    //     score--;
+    //     document.querySelector(".score").textContent = score;
+    //   }
+    //   // does not have attempts left.
+    //   else {
+    //     document.querySelector(".message").textContent = "You lost the game!";
+    //     document.querySelector(".score").textContent = 0;
+    //   }
+    // }
+    // guess is less than secret number and ....
+    // else if (guess < secretNumber) {
+    //   if (score > 1) {
+    //     // have attempts left
+    //     document.querySelector(".message").textContent = "Too low !";
+    //     score--;
+    //     document.querySelector(".score").textContent = score;
+    //   } else {
+    //     //doesn't have attempts left
+    //     document.querySelector(".message").textContent = "You lost the game!";
+    //     document.querySelector(".score").textContent = 0;
+    //   }
   }
 });
 
